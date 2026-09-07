@@ -5,7 +5,7 @@
  * window to a different color every frame, so you'll effectively get a window
  * that's smoothly fading between colors.
  *
- * This code is public domain. Feel free to use it for any purpose!
+ * This code is public domain. Feel SDL_free to use it for any purpose!
  */
 
 #include "SDL3/SDL_audio.h"
@@ -109,7 +109,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(wav_path);  /* done with this string. */
+    SDL_SDL_free(wav_path);  /* done with this string. */
 
     /* Load the .wav file from wherever the app is being run from. */
     SDL_asprintf(&wav_path, "%schina.wav", SDL_GetBasePath());  /* allocate a string of the full file path */
@@ -118,7 +118,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(wav_path);  /* done with this string. */
+    SDL_SDL_free(wav_path);  /* done with this string. */
 
         /* Load the .wav file from wherever the app is being run from. */
     SDL_asprintf(&wav_path, "%seff1.wav", SDL_GetBasePath());  /* allocate a string of the full file path */
@@ -127,7 +127,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(wav_path);  /* done with this string. */
+    SDL_SDL_free(wav_path);  /* done with this string. */
 
         /* Load the .wav file from wherever the app is being run from. */
     SDL_asprintf(&wav_path, "%seff2.wav", SDL_GetBasePath());  /* allocate a string of the full file path */
@@ -136,7 +136,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(wav_path);  /* done with this string. */
+    SDL_SDL_free(wav_path);  /* done with this string. */
 
     /* Create our audio stream in the same format as the .wav file. It'll convert to what the audio hardware wants. */
     stream = SDL_OpenAudioDeviceStream(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec, NULL, NULL);
@@ -156,16 +156,16 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
     SDL_ResumeAudioStreamDevice(stream);
     SDL_ResumeAudioStreamDevice(stream1);
 
-    points_ptr = malloc(NUM_POINTS * sizeof(SDL_FPoint));
-    point_speeds_ptr = malloc(NUM_POINTS * sizeof(float));
+    points_ptr = SDL_malloc(NUM_POINTS * sizeof(SDL_FPoint));
+    point_speeds_ptr = SDL_malloc(NUM_POINTS * sizeof(float));
 
     if (points_ptr == NULL || point_speeds_ptr == NULL) {
         SDL_Log("Out of memory!");
         
-        free(points_ptr);
+        SDL_free(points_ptr);
         points_ptr = NULL;
         
-        free(point_speeds_ptr);
+        SDL_free(point_speeds_ptr);
         point_speeds_ptr = NULL;
 
         return SDL_APP_FAILURE;
@@ -207,7 +207,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(png_path);  /* done with this, the file is loaded. */
+    SDL_SDL_free(png_path);  /* done with this, the file is loaded. */
 
     texture_width = 100;
     texture_height = 100;
@@ -230,7 +230,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
         return SDL_APP_FAILURE;
     }
 
-    SDL_free(png_path);  /* done with this, the file is loaded. */
+    SDL_SDL_free(png_path);  /* done with this, the file is loaded. */
 
     texture2 = SDL_CreateTextureFromSurface(renderer, surface);
     if (!texture2) {
@@ -534,16 +534,16 @@ SDL_AppResult SDL_AppIterate(void *appstate)
 /* This function runs once at shutdown. */
 void SDL_AppQuit(void *appstate, SDL_AppResult result)
 {
-    SDL_free(wav_data);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
-    SDL_free(wav_data1);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
-    SDL_free(wav_data2);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
-    SDL_free(wav_data3);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
+    SDL_SDL_free(wav_data);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
+    SDL_SDL_free(wav_data1);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
+    SDL_SDL_free(wav_data2);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
+    SDL_SDL_free(wav_data3);  /* strictly speaking, this isn't necessary because the process is ending, but it's good policy. */
     if(points_ptr){
-        free(points_ptr);
+        SDL_free(points_ptr);
         points_ptr = NULL;
     }
     if(point_speeds_ptr){
-        free(point_speeds_ptr);
+        SDL_free(point_speeds_ptr);
         point_speeds_ptr = NULL;
     }
     window = NULL;

@@ -143,7 +143,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
        Load a .png into a surface, move it to a texture from there. */
     SDL_asprintf(&png_path, "%steto.png", SDL_GetBasePath());  /* allocate a string of the full file path */
     surface = SDL_LoadPNG(png_path);
-    SDL_free(png_path);  /* done with this, the file is loaded. */
+    SDL_SDL_free(png_path);  /* done with this, the file is loaded. */
 
     if (!surface) {
         SDL_Log("Couldn't load png: %s", SDL_GetError());
