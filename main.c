@@ -19,9 +19,6 @@ static SDL_Renderer *renderer = NULL;
 static SDL_Texture *texture = NULL;
 static TTF_Font *font = NULL;
 
-extern unsigned char tiny_ttf[];
-extern unsigned int tiny_ttf_len;
-
 /* This function runs once at startup. */
 SDL_AppResult SDL_AppInit(void **appstate, int argc, char *argv[])
 {
